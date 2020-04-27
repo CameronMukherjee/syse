@@ -1,6 +1,9 @@
 package main
 
-import "./getos"
+import (
+	"./getinternet"
+	"./getos"
+)
 
 func main() {
 	getos.GetUserDetails()      //Works without errors
@@ -9,6 +12,8 @@ func main() {
 	getos.GetUptime()           //Works without errors
 	getos.GetVirtualMemUsage()  //Works without errors
 	getos.GetCPUUsage()         //Works without errors
+	getinternet.GetLocalIP()    //Works without errors
+	getinternet.GetPublicIP()   //Works without errors - returning []byte
 }
 
 // getos.GetDiskSpace("/")     //Works without errors

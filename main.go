@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net"
 	"os"
@@ -24,24 +23,22 @@ type Final struct {
 }
 
 func main() {
-	finalSending := Final{
-		user:     getos.GetUserDetails(),
-		cpuInfo:  getos.GetProcessorDetails(),
-		osInfo:   getos.GetOS(),
-		uptime:   getos.GetUptime(),
-		virtMem:  getos.GetVirtualMemUsage(),
-		localIP:  getinternet.GetLocalIP(),
-		publicIP: getinternet.GetPublicIP(),
-	}
-	fmt.Println(finalSending)
-	// jsonAddToFile(finalSending)
+	// finalSending := Final{
+	// 	user:     getos.GetUserDetails(),
+	// 	cpuInfo:  getos.GetProcessorDetails(),
+	// 	osInfo:   getos.GetOS(),
+	// 	uptime:   getos.GetUptime(),
+	// 	virtMem:  getos.GetVirtualMemUsage(),
+	// 	localIP:  getinternet.GetLocalIP(),
+	// 	publicIP: getinternet.GetPublicIP(),
+	// }
+	// fmt.Println(finalSending)
 	jsonAddToFile(getos.GetUserDetails())
 	jsonAddToFile(getos.GetProcessorDetails())
 	jsonAddToFile(getos.GetOS())
 	jsonAddToFile(getos.GetUptime())
 	jsonAddToFile(getos.GetVirtualMemUsage())
-	jsonAddToFile(getinternet.GetLocalIP())
-	jsonAddToFile(getinternet.GetPublicIP())
+	jsonAddToFile(getinternet.GetIPs())
 }
 
 func jsonAddToFile(input interface{}) {

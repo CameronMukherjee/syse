@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"log"
-	"net"
 	"os"
 
 	"./getinternet"
@@ -12,27 +11,24 @@ import (
 
 // Final struct of all other structs
 type Final struct {
-	user     getos.User          `Json:"User"`
-	cpuInfo  getos.CPUInfo       `Json:"CPU Info"`
-	osInfo   getos.OS            `Json:"OS"`
-	uptime   getos.Uptime        `Json:"Uptime"`
-	virtMem  getos.VirtualMemory `Json:"Virtual Memory"`
-	cpuUsage []float64           `Json:"CPU Usage"`
-	localIP  net.IP              `Json:"Local IP"`
-	publicIP string              `Json:"Public IP"`
+	user    getos.User          `Json:"User"`
+	cpuInfo getos.CPUInfo       `Json:"CPU Info"`
+	osInfo  getos.OS            `Json:"OS"`
+	uptime  getos.Uptime        `Json:"Uptime"`
+	virtMem getos.VirtualMemory `Json:"Virtual Memory"`
+	getIPs  getinternet.IP      `Json:"IP Addresses"`
 }
 
 func main() {
-	// finalSending := Final{
-	// 	user:     getos.GetUserDetails(),
-	// 	cpuInfo:  getos.GetProcessorDetails(),
-	// 	osInfo:   getos.GetOS(),
-	// 	uptime:   getos.GetUptime(),
-	// 	virtMem:  getos.GetVirtualMemUsage(),
-	// 	localIP:  getinternet.GetLocalIP(),
-	// 	publicIP: getinternet.GetPublicIP(),
+	// postObject := Final{
+	// 	user:    getos.GetUserDetails(),
+	// 	cpuInfo: getos.GetProcessorDetails(),
+	// 	osInfo:  getos.GetOS(),
+	// 	uptime:  getos.GetUptime(),
+	// 	virtMem: getos.GetVirtualMemUsage(),
+	// 	getIPs:  getinternet.GetIPs(),
 	// }
-	// fmt.Println(finalSending)
+	// jsonAddToFile(postObject)
 	jsonAddToFile(getos.GetUserDetails())
 	jsonAddToFile(getos.GetProcessorDetails())
 	jsonAddToFile(getos.GetOS())

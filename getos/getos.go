@@ -76,7 +76,7 @@ func GetUserDetails() User {
 	if err != nil {
 		log.Println(err)
 	}
-	id, err := machineid.ProtectedID("abigail123")
+	id, err := machineid.ProtectedID("password")
 	if err != nil {
 		log.Println(err)
 	}

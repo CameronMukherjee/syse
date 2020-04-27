@@ -16,7 +16,7 @@ type Export struct {
 	OSInfo  getos.OS            `Json:"OS"`
 	Uptime  getos.Uptime        `Json:"Uptime"`
 	VirtMem getos.VirtualMemory `Json:"Virtual Memory"`
-	GetIPs  getinternet.IP      `Json:"IP Addresses"`
+	IPs     getinternet.IP      `Json:"IP Addresses"`
 }
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 		OSInfo:  getos.GetOS(),
 		Uptime:  getos.GetUptime(),
 		VirtMem: getos.GetVirtualMemUsage(),
-		GetIPs:  getinternet.GetIPs(),
+		IPs:     getinternet.GetIPs(),
 	}
 	// fmt.Printf("%+v\n", postObject)
 	jsonAddToFile(postObject)

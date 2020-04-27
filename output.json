@@ -1,0 +1,44 @@
+{
+    "User": {
+        "HWID": "672a6fee1559628281f586d20ce49f4fd56cbb4bb1f045db371a346248f920e9",
+        "GID": "20",
+        "Name": "Cameron Mukherjee",
+        "UID": "501",
+        "Username": "cameronmukherjee",
+        "HomeDirectory": "/Users/cameronmukherjee"
+    },
+    "CPUInfo": {
+        "BrandName": "Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz",
+        "PhysicalCores": 2,
+        "ThreadsPerCore": 2,
+        "LogicalCores": 4,
+        "Family": 6,
+        "Features": 1078612115047905267,
+        "CPUUsage": [
+            39.603960396039604,
+            9.803921568627452,
+            37.62376237623762,
+            7.000000000000001
+        ]
+    },
+    "OSInfo": {
+        "Platform": "darwin",
+        "Family": "Standalone Workstation",
+        "ProductVersion": "10.15.4"
+    },
+    "Uptime": {
+        "Days": 2,
+        "Hours": 9,
+        "Minutes": 35,
+        "Seconds": 207339
+    },
+    "VirtMem": {
+        "Total": 8589934592,
+        "Free": 487325696,
+        "UsedPercent": 66.93148612976074
+    },
+    "IPs": {
+        "LocalIP": "192.168.0.29",
+        "PublicIP": "77.101.140.187"
+    }
+},

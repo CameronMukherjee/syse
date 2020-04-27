@@ -1,10 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"os"
-
+	"./getfiles"
 	"./getinternet"
 	"./getos"
 )
@@ -28,30 +25,12 @@ func main() {
 		VirtMem: getos.GetVirtualMemUsage(),
 		IPs:     getinternet.GetIPs(),
 	}
-	// fmt.Printf("%+v\n", postObject)
-	jsonAddToFile(postObject)
-}
-
-func jsonAddToFile(input interface{}) {
-	var jsonData []byte
-	jsonData, err := json.MarshalIndent(input, "", "    ")
-	if err != nil {
-		log.Fatal(err)
-	}
-	data := string(jsonData)
-	// data = data + "," + "\n"
-	data = data + ","
-	// f, err := os.OpenFile("output.json", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	f, err := os.OpenFile("output.json", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-	if _, err := f.WriteString(data); err != nil {
-		log.Fatal(err)
-	}
+	getfiles.JSONAddToFile(postObject)
+	getfiles.StartScan("/Users/cameronmukherjee")
 }
 
 // Only works on UNIX
 // getos.GetDiskSpace("/")     //Works without errors
 // getos.GetPCI() 			   //Untested
+
+// fmt.Printf("%+v\n", postObject)

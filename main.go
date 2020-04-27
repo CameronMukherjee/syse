@@ -3,8 +3,8 @@ package main
 import "./getos"
 
 func main() {
-	getos.GetUserDetails()
-	getos.GetProcessorDetails()
-	getos.GetDiskSpace("\\")
-	getos.GetPCI()
+	getos.GetUserDetails()      //Works without errors
+	getos.GetProcessorDetails() //Works without errors
+	// getos.GetDiskSpace("\\")
+	// getos.GetPCI()
 }

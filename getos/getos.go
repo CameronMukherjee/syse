@@ -16,57 +16,57 @@ import (
 
 // User struct, contains name, uid, username and home directory.
 type User struct {
-	HWID          string `json:"eHWID"`
-	GID           string `json:"GID"`
-	Name          string `json:"Name"`
-	UID           string `json:"UID"`
-	Username      string `json:"Username"`
-	HomeDirectory string `json:"HomeDirectory"`
+	HWID          string `Json:"eHWID"`
+	GID           string `Json:"GID"`
+	Name          string `Json:"Name"`
+	UID           string `Json:"UID"`
+	Username      string `Json:"Username"`
+	HomeDirectory string `Json:"HomeDirectory"`
 }
 
 // CPUInfo contains information about the CPU
 type CPUInfo struct {
-	BrandName      string      `json:"BrandName"`
-	PhysicalCores  int         `json:"PhysicalCores"`
-	ThreadsPerCore int         `json:"ThreadsPerCore"`
-	LogicalCores   int         `json:"LogicalCores"`
-	Family         int         `json:"Family"`
-	Features       cpuid.Flags `json:"Features"`
+	BrandName      string      `Json:"BrandName"`
+	PhysicalCores  int         `Json:"PhysicalCores"`
+	ThreadsPerCore int         `Json:"ThreadsPerCore"`
+	LogicalCores   int         `Json:"LogicalCores"`
+	Family         int         `Json:"Family"`
+	Features       cpuid.Flags `Json:"Features"`
 }
 
 // DiskStatus contains information about local system disk space.
 type DiskStatus struct {
-	All  uint64 `json:"all"`
-	Used uint64 `json:"used"`
-	Free uint64 `json:"free"`
+	All  uint64 `Json:"all"`
+	Used uint64 `Json:"used"`
+	Free uint64 `Json:"free"`
 }
 
 // PCI returning vendorname and productName
 type PCI struct {
-	VendorName  string `json:"VendorName"`
-	ProductName string `json:"ProductName"`
+	VendorName  string `Json:"VendorName"`
+	ProductName string `Json:"ProductName"`
 }
 
 // OS returning Operating System Details
 type OS struct {
-	Platform       string `json:"Platform"`
-	Family         string `json:"Famil"`
-	ProductVersion string `json:"ProductVersion"`
+	Platform       string `Json:"Platform"`
+	Family         string `Json:"Famil"`
+	ProductVersion string `Json:"ProductVersion"`
 }
 
 // Uptime of system.
 type Uptime struct {
-	Days    uint64 `json:"Days"`
-	Hours   uint64 `json:"Hours"`
-	Minutes uint64 `json:"Minutes"`
-	Seconds uint64 `json:"Seconds"`
+	Days    uint64 `Json:"Days"`
+	Hours   uint64 `Json:"Hours"`
+	Minutes uint64 `Json:"Minutes"`
+	Seconds uint64 `Json:"Seconds"`
 }
 
 // VirtualMemory usage of system.
 type VirtualMemory struct {
-	Total       uint64  `json:"Total"`
-	Free        uint64  `json:"Free"`
-	UsedPercent float64 `json:"UsedPercentage"`
+	Total       uint64  `Json:"Total"`
+	Free        uint64  `Json:"Free"`
+	UsedPercent float64 `Json:"UsedPercentage"`
 }
 
 // GetUserDetails returns the local user details logged into the computer.

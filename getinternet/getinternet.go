@@ -2,6 +2,7 @@ package getinternet
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
@@ -24,6 +25,7 @@ func GetLocalIP() string {
 	defer conn.Close()
 
 	localAddr := conn.LocalAddr().(*net.UDPAddr)
+	fmt.Println(localAddr.IP)
 	return string(localAddr.IP)
 }
 
@@ -40,5 +42,6 @@ func GetPublicIP() PublicIP {
 	}
 	var response PublicIP
 	json.Unmarshal([]byte(body), &response)
+	fmt.Println(response)
 	return response
 }

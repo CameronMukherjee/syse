@@ -21,37 +21,38 @@ type User struct {
 	Name          string `Json:"Name"`
 	UID           string `Json:"UID"`
 	Username      string `Json:"Username"`
-	HomeDirectory string `Json:"HomeDirectory"`
+	HomeDirectory string `Json:"Home Directory"`
 }
 
 // CPUInfo contains information about the CPU
 type CPUInfo struct {
 	BrandName      string      `Json:"BrandName"`
-	PhysicalCores  int         `Json:"PhysicalCores"`
-	ThreadsPerCore int         `Json:"ThreadsPerCore"`
-	LogicalCores   int         `Json:"LogicalCores"`
+	PhysicalCores  int         `Json:"Physical Cores"`
+	ThreadsPerCore int         `Json:"Threads Per Core"`
+	LogicalCores   int         `Json:"Logical Cores"`
 	Family         int         `Json:"Family"`
 	Features       cpuid.Flags `Json:"Features"`
+	CPUUsage       []float64   `Json:"CPU Usage"`
 }
 
 // DiskStatus contains information about local system disk space.
 type DiskStatus struct {
-	All  uint64 `Json:"all"`
-	Used uint64 `Json:"used"`
-	Free uint64 `Json:"free"`
+	All  uint64 `Json:"All"`
+	Used uint64 `Json:"Used"`
+	Free uint64 `Json:"Free"`
 }
 
 // PCI returning vendorname and productName
 type PCI struct {
-	VendorName  string `Json:"VendorName"`
-	ProductName string `Json:"ProductName"`
+	VendorName  string `Json:"Vendor Name"`
+	ProductName string `Json:"Product Name"`
 }
 
 // OS returning Operating System Details
 type OS struct {
 	Platform       string `Json:"Platform"`
-	Family         string `Json:"Famil"`
-	ProductVersion string `Json:"ProductVersion"`
+	Family         string `Json:"Family"`
+	ProductVersion string `Json:"Product Version"`
 }
 
 // Uptime of system.
@@ -66,7 +67,7 @@ type Uptime struct {
 type VirtualMemory struct {
 	Total       uint64  `Json:"Total"`
 	Free        uint64  `Json:"Free"`
-	UsedPercent float64 `Json:"UsedPercentage"`
+	UsedPercent float64 `Json:"Used Percentage"`
 }
 
 // GetUserDetails returns the local user details logged into the computer.
@@ -99,6 +100,7 @@ func GetProcessorDetails() CPUInfo {
 		LogicalCores:   cpuid.CPU.LogicalCores,
 		Family:         cpuid.CPU.Family,
 		Features:       cpuid.CPU.Features,
+		CPUUsage:       GetCPUUsage(),
 	}
 }
 
@@ -144,7 +146,7 @@ func GetVirtualMemUsage() VirtualMemory {
 
 // GetCPUUsage returns the cpu usage
 func GetCPUUsage() []float64 {
-	percent, err := cpu.Percent(time.Second, false)
+	percent, err := cpu.Percent(time.Second, true)
 	if err != nil {
 		log.Println(err)
 	}

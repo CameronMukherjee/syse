@@ -1,23 +1,19 @@
 package getinternet
 
 import (
-	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
 )
 
-// PublicIP storing information about the public ip address
-type PublicIP struct {
-	ip      string
-	country string
-	cc      string
+type IP struct {
+	LocalIP  net.IP `Json:"Local IP"`
+	PublicIP string `Json:"Public IP"`
 }
 
 // GetLocalIP returns local IP address of machine
-func GetLocalIP() string {
+func GetLocalIP() net.IP {
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
 		log.Fatal(err)
@@ -25,12 +21,11 @@ func GetLocalIP() string {
 	defer conn.Close()
 
 	localAddr := conn.LocalAddr().(*net.UDPAddr)
-	fmt.Println(localAddr.IP)
-	return string(localAddr.IP)
+	return localAddr.IP
 }
 
 // GetPublicIP returns the machines public IP address
-func GetPublicIP() PublicIP {
+func GetPublicIP() string {
 	resp, err := http.Get("https://api.myip.com")
 	if err != nil {
 		log.Println(err)
@@ -40,8 +35,6 @@ func GetPublicIP() PublicIP {
 	if err != nil {
 		log.Println(err)
 	}
-	var response PublicIP
-	json.Unmarshal([]byte(body), &response)
-	fmt.Println(response)
-	return response
+
+	return string([]byte(body))
 }

@@ -13,12 +13,6 @@ type IP struct {
 	PublicIP string `Json:"Public IP"`
 }
 
-type GETReq struct {
-	ip      string
-	country string
-	cc      string
-}
-
 // GetIPs returns local and public IP
 func GetIPs() IP {
 	conn, err := net.Dial("udp", "8.8.8.8:80")

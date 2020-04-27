@@ -92,6 +92,7 @@ func GetDiskSpace(path string) DiskStatus {
 
 // GetPCI returns a list of PCI structs including vendorNames and productNames.
 func GetPCI() []PCI {
+	// Does not work with MacOS.
 	pci, err := ghw.PCI()
 	if err != nil {
 		log.Println(err)

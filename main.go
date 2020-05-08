@@ -26,7 +26,7 @@ func main() {
 		IPs:     getinternet.GetIPs(),
 	}
 	getfiles.JSONAddToFile(postObject)
-	getfiles.StartScan("/Users/cameronmukherjee")
+//	getfiles.StartScan("/Users/cameronmukherjee")
 }
 
 // Only works on UNIX

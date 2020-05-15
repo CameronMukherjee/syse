@@ -24,7 +24,6 @@ func main() {
 		VirtMem: getos.GetVirtualMemUsage(),
 		IPs:     getinternet.GetIPs(),
 	}
-	getfiles.JSONAddToFile(postObject)
 }
 
 // Only works on UNIX

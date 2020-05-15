@@ -3,6 +3,9 @@ package main
 import (
 	"./getinternet"
 	"./getos"
+	"encoding/json"
+	"log"
+	"os"
 )
 
 // Export struct of all other structs
@@ -23,6 +26,27 @@ func main() {
 		Uptime:  getos.GetUptime(),
 		VirtMem: getos.GetVirtualMemUsage(),
 		IPs:     getinternet.GetIPs(),
+	}
+	jsonAddToFile(postObject)
+}
+
+func jsonAddToFile(input interface{}) {
+	var jsonData []byte
+	jsonData, err := json.MarshalIndent(input, "", "    ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	data := string(jsonData)
+	// data = data + "," + "\n"
+	data = data + ","
+	// f, err := os.OpenFile("output.json", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("output.json", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	if _, err := f.WriteString(data); err != nil {
+		log.Fatal(err)
 	}
 }
 

@@ -1,2 +1,2 @@
-# studious-computing
-## Hardware ID is Hashed
+# syse
+System configuration exporter - exports to JSON.
